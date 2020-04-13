@@ -1,4 +1,6 @@
 import math
+from classes.Box import Box
+from classes.Point import Point
 
 class Grid:
     """
@@ -84,4 +86,28 @@ class Grid:
         if not stop:
             return -1
         return fg
+
+    def _add_point(self, x, y):
+        """
+        Creates new Point at given coordinate if it does not already exist
+        :return: Point at given coordinates
+        """
+        if y in self._points:
+            if x not in self._points[y]:
+                self._points[y][x] = Point(x, y)
+        else:
+            self._points[y] = {}
+            self._points[y][x] = Point(x, y)
+
+        return self._points[y][x]
+
+    def draw(self):
+        """
+        Visualize grid
+        """
+        self._image.canvas.delete("GRID")
+
+        if self.visible:
+            for box in self._boxes:
+                box.draw(self._image.canvas, True)
 

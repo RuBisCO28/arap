@@ -27,10 +27,10 @@ class Application:
 
     def run(self):
         self._grid = Grid(self._cw, self._image)
-        #self._image.draw()
-        #self._grid.draw()
+        self._image.draw() # ImageHelper
+        self._grid.draw() # Grid
 
-        #self._run_once()
+        self._run_once()
 
         self._window.mainloop()
 
